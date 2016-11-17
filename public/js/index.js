@@ -16,12 +16,12 @@ socket.on('newMessage', function(msg) {
   jQuery('#messages').append(li);
 });
 
-socket.emit('sendMessage', {
-  from: 'admin',
-  text: 'welcome to the chat app'
-}, function (data) {
-  console.log('got it', data);
-});
+// socket.emit('sendMessage', {
+//   from: 'admin',
+//   text: 'welcome to the chat app'
+// }, function (data) {
+//   console.log('got it', data);
+// });
 
 jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();
@@ -30,6 +30,6 @@ jQuery('#message-form').on('submit', function (e) {
     from: 'User',
     text:jQuery('[name=message]').val()
   }, function () {
-
+    jQuery('[name=message]').val(''); //clearing box after sending
   })
 });
