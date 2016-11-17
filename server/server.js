@@ -14,7 +14,15 @@ app.use(express.static(publicPath));
 
 io.on('connection',(socket) => {
   console.log('new user connected');
-  
+
+  socket.emit('newMessage', {
+    to: '123456789',
+    text: 'heu, how are u ?'
+  });
+
+  socket.on('sendMessage', (msg) => {
+    console.log('new msg', msg);
+  });
   socket.on('disconnect', () => {
     console.log('browser closed');
   });
